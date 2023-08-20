@@ -1,6 +1,6 @@
 import { useAppContext } from '../context/appContext'
 import StatItem from './StatItem'
-import { FaSuitcaseRolling, FaCalendarCheck, FaBug } from 'react-icons/fa'
+import { FaCross, FaCalendarCheck, FaBug } from 'react-icons/fa'
 import Wrapper from '../assets/wrappers/StatsContainer'
 
 const StatsContainer = () => {
@@ -8,21 +8,21 @@ const StatsContainer = () => {
 
   const defaultStats = [
     {
-      title: 'pending applications',
-      count: stats.pending || 0,
-      icon: <FaSuitcaseRolling />,
+      title: 'Working Motors',
+      count: stats.working || 0,
+      icon: <FaCalendarCheck />,
       color: '#e9b949',
       bcg: '#fcefc7',
     },
     {
-      title: 'interviews scheduled',
+      title: 'Not Working Motors',
       count: stats.interview || 0,
-      icon: <FaCalendarCheck />,
+      icon: <FaCross />,
       color: '#647acb',
       bcg: '#e0e8f9',
     },
     {
-      title: 'jobs declined',
+      title: 'Faulty Motors',
       count: stats.declined || 0,
       icon: <FaBug />,
       color: '#d66a6a',

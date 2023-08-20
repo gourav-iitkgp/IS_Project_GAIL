@@ -61,7 +61,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/jobs?status=all&jobType=all&sort=latest&page=1&limit=25",
+							"raw": "{{URL}}/jobs?status=all&motorType=all&sort=latest&page=1&limit=25",
 							"host": [
 								"{{URL}}"
 							],
@@ -74,7 +74,7 @@
 									"value": "all"
 								},
 								{
-									"key": "jobType",
+									"key": "motorType",
 									"value": "all"
 								},
 								{

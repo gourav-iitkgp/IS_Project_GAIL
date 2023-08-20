@@ -8,10 +8,10 @@ const AddJob = () => {
     isEditing,
     showAlert,
     displayAlert,
-    position,
+    motorName,
     company,
-    jobLocation,
-    jobType,
+    motorLocation,
+    motorType,
     jobTypeOptions,
     status,
     statusOptions,
@@ -24,7 +24,7 @@ const AddJob = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (!position || !company || !jobLocation) {
+    if (!motorName || !company || !motorLocation) {
       displayAlert()
       return
     }
@@ -34,7 +34,7 @@ const AddJob = () => {
     }
     createJob()
   }
-  const handleJobInput = (e) => {
+  const handleMotorInput = (e) => {
     const name = e.target.name
     const value = e.target.value
     handleChange({ name, value })
@@ -43,44 +43,47 @@ const AddJob = () => {
   return (
     <Wrapper>
       <form className='form'>
-        <h3>{isEditing ? 'edit job' : 'add job'}</h3>
-        {showAlert && <Alert />}
+        <h3>{isEditing ? 'edit Motor Details' : 'add Motor Details'}</h3>
+        {showAlert && <Alert/>}
         <div className='form-center'>
-          {/* position */}
+          {/* motorName */}
           <FormRow
             type='text'
-            name='position'
-            value={position}
-            handleChange={handleJobInput}
+            labelText={"Motor Name"}
+            name='motorName'
+            value={motorName}
+            handleChange={handleMotorInput}
           />
           {/* company */}
           <FormRow
             type='text'
+            labelText={"Motor Company"}
             name='company'
             value={company}
-            handleChange={handleJobInput}
+            handleChange={handleMotorInput}
           />
           {/* location */}
           <FormRow
             type='text'
-            labelText='job location'
-            name='jobLocation'
-            value={jobLocation}
-            handleChange={handleJobInput}
+            labelText='Motor Location'
+            name='motorLocation'
+            value={motorLocation}
+            handleChange={handleMotorInput}
           />
           {/* job status */}
           <FormRowSelect
             name='status'
+            labelText={"Motor Status"}
             value={status}
-            handleChange={handleJobInput}
+            handleChange={handleMotorInput}
             list={statusOptions}
           />
           {/* job type */}
           <FormRowSelect
-            name='jobType'
-            labelText='job type'
-            value={jobType}
-            handleChange={handleJobInput}
+            name='motorType'
+            labelText='Motor Type'
+            value={motorType}
+            handleChange={handleMotorInput}
             list={jobTypeOptions}
           />
           {/* btn container */}

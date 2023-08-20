@@ -59,7 +59,7 @@ const reducer = (state, action) => {
       isLoading: false,
       user: action.payload.user,
       userLocation: action.payload.location,
-      jobLocation: action.payload.location,
+      motorLocation: action.payload.location,
       showAlert: true,
       alertType: 'success',
       alertText: action.payload.alertText,
@@ -95,7 +95,7 @@ const reducer = (state, action) => {
       isLoading: false,
       user: action.payload.user,
       userLocation: action.payload.location,
-      jobLocation: action.payload.location,
+      motorLocation: action.payload.location,
       showAlert: true,
       alertType: 'success',
       alertText: 'User Profile Updated!',
@@ -121,11 +121,11 @@ const reducer = (state, action) => {
     const initialState = {
       isEditing: false,
       editJobId: '',
-      position: '',
+      motorName: '',
       company: '',
-      jobLocation: state.userLocation,
-      jobType: 'full-time',
-      status: 'pending',
+      motorLocation: state.userLocation,
+      motorType: 'A',
+      status: 'Working',
     };
 
     return {
@@ -143,7 +143,7 @@ const reducer = (state, action) => {
       isLoading: false,
       showAlert: true,
       alertType: 'success',
-      alertText: 'New Job Created!',
+      alertText: 'New Motor Added!',
     };
   }
   if (action.type === CREATE_JOB_ERROR) {
@@ -169,15 +169,15 @@ const reducer = (state, action) => {
   }
   if (action.type === SET_EDIT_JOB) {
     const job = state.jobs.find((job) => job._id === action.payload.id);
-    const { _id, position, company, jobLocation, jobType, status } = job;
+    const { _id, motorName, company, motorLocation, motorType, status } = job;
     return {
       ...state,
       isEditing: true,
       editJobId: _id,
-      position,
+      motorName,
       company,
-      jobLocation,
-      jobType,
+      motorLocation,
+      motorType,
       status,
     };
   }
@@ -253,7 +253,7 @@ const reducer = (state, action) => {
       userLoading: false,
       user: action.payload.user,
       userLocation: action.payload.location,
-      jobLocation: action.payload.location,
+      motorLocation: action.payload.location,
     };
   }
   throw new Error(`no such action : ${action.type}`);

@@ -7,10 +7,10 @@ import JobInfo from './JobInfo'
 
 const Job = ({
   _id,
-  position,
+  motorName,
   company,
-  jobLocation,
-  jobType,
+  motorLocation,
+  motorType,
   createdAt,
   status,
 }) => {
@@ -23,15 +23,15 @@ const Job = ({
       <header>
         <div className='main-icon'>{company.charAt(0)}</div>
         <div className='info'>
-          <h5>{position}</h5>
+          <h5>{motorName}</h5>
           <p>{company}</p>
         </div>
       </header>
       <div className='content'>
         <div className='content-center'>
-          <JobInfo icon={<FaLocationArrow />} text={jobLocation} />
+          <JobInfo icon={<FaLocationArrow />} text={motorLocation} />
           <JobInfo icon={<FaCalendarAlt />} text={date} />
-          <JobInfo icon={<FaBriefcase />} text={jobType} />
+          <JobInfo icon={<FaBriefcase />} text={motorType} />
           <div className={`status ${status}`}>{status}</div>
         </div>
         <footer>

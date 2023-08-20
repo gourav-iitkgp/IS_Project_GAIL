@@ -45,13 +45,13 @@ const initialState = {
   showSidebar: false,
   isEditing: false,
   editJobId: '',
-  position: '',
+  motorName: '',
   company: '',
-  jobLocation: '',
-  jobTypeOptions: ['full-time', 'part-time', 'remote', 'internship'],
-  jobType: 'full-time',
-  statusOptions: ['interview', 'declined', 'pending'],
-  status: 'pending',
+  motorLocation: '',
+  jobTypeOptions: ['A', 'B', 'C', 'D'],
+  motorType: 'A',
+  statusOptions: ['Working', 'Not Working', 'Faulty'],
+  status: 'Working',
   jobs: [],
   totalJobs: 0,
   numOfPages: 1,
@@ -161,12 +161,12 @@ const AppProvider = ({ children }) => {
   const createJob = async () => {
     dispatch({ type: CREATE_JOB_BEGIN });
     try {
-      const { position, company, jobLocation, jobType, status } = state;
+      const { motorName, company, motorLocation, motorType, status } = state;
       await authFetch.post('/jobs', {
-        position,
+        motorName,
         company,
-        jobLocation,
-        jobType,
+        motorLocation,
+        motorType,
         status,
       });
       dispatch({ type: CREATE_JOB_SUCCESS });
@@ -184,7 +184,7 @@ const AppProvider = ({ children }) => {
   const getJobs = async () => {
     const { page, search, searchStatus, searchType, sort } = state;
 
-    let url = `/jobs?page=${page}&status=${searchStatus}&jobType=${searchType}&sort=${sort}`;
+    let url = `/jobs?page=${page}&status=${searchStatus}&motorType=${searchType}&sort=${sort}`;
     if (search) {
       url = url + `&search=${search}`;
     }
@@ -213,12 +213,12 @@ const AppProvider = ({ children }) => {
     dispatch({ type: EDIT_JOB_BEGIN });
 
     try {
-      const { position, company, jobLocation, jobType, status } = state;
+      const { motorName, company, motorLocation, motorType, status } = state;
       await authFetch.patch(`/jobs/${state.editJobId}`, {
         company,
-        position,
-        jobLocation,
-        jobType,
+        motorName,
+        motorLocation,
+        motorType,
         status,
       });
       dispatch({ type: EDIT_JOB_SUCCESS });

@@ -9,9 +9,9 @@ import checkPermissions from '../utils/checkPermissions.js';
 import mongoose from 'mongoose';
 import moment from 'moment';
 const createJob = async (req, res) => {
-  const { position, company } = req.body;
+  const { motorName, company } = req.body;
 
-  if (!position || !company) {
+  if (!motorName || !company) {
     throw new BadRequestError('Please provide all values');
   }
   req.body.createdBy = req.user.userId;
@@ -19,7 +19,7 @@ const createJob = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ job });
 };
 const getAllJobs = async (req, res) => {
-  const { status, jobType, sort, search } = req.query;
+  const { status, motorType, sort, search } = req.query;
 
   const queryObject = {
     createdBy: req.user.userId,
@@ -29,11 +29,11 @@ const getAllJobs = async (req, res) => {
   if (status && status !== 'all') {
     queryObject.status = status;
   }
-  if (jobType && jobType !== 'all') {
-    queryObject.jobType = jobType;
+  if (motorType && motorType !== 'all') {
+    queryObject.motorType = motorType;
   }
   if (search) {
-    queryObject.position = { $regex: search, $options: 'i' };
+    queryObject.motorName = { $regex: search, $options: 'i' };
   }
   // NO AWAIT
 
@@ -48,10 +48,10 @@ const getAllJobs = async (req, res) => {
     result = result.sort('createdAt');
   }
   if (sort === 'a-z') {
-    result = result.sort('position');
+    result = result.sort('motorName');
   }
   if (sort === 'z-a') {
-    result = result.sort('-position');
+    result = result.sort('-motorName');
   }
 
   //
@@ -72,9 +72,9 @@ const getAllJobs = async (req, res) => {
 };
 const updateJob = async (req, res) => {
   const { id: jobId } = req.params;
-  const { company, position } = req.body;
+  const { company, motorName } = req.body;
 
-  if (!position || !company) {
+  if (!motorName || !company) {
     throw new BadRequestError('Please provide all values');
   }
   const job = await Job.findOne({ _id: jobId });
