@@ -1,7 +1,6 @@
 import Wrapper from '../assets/wrappers/Navbar'
 import { FaAlignLeft, FaUserCircle, FaCaretDown } from 'react-icons/fa'
 import { useAppContext } from '../context/appContext'
-import Logo from './Logo'
 import { useState } from 'react'
 const Navbar = () => {
   const [showLogout, setShowLogout] = useState(false)
@@ -13,7 +12,6 @@ const Navbar = () => {
           <FaAlignLeft />
         </button>
         <div>
-          <Logo />
           <h3 className='logo-text'>dashboard</h3>
         </div>
         <div className='btn-container'>
