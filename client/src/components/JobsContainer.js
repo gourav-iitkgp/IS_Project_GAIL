@@ -31,7 +31,7 @@ const JobsContainer = () => {
   if (jobs.length === 0) {
     return (
       <Wrapper>
-        <h2>No jobs to display...</h2>
+        <h2>No Motors to display...</h2>
       </Wrapper>
     );
   }
@@ -40,7 +40,7 @@ const JobsContainer = () => {
     <Wrapper>
       {showAlert && <Alert />}
       <h5>
-        {totalJobs} job{jobs.length > 1 && 's'} found
+        {totalJobs} Motor{jobs.length > 1 && 's'} found
       </h5>
       <div className='jobs'>
         {jobs.map((job) => {
