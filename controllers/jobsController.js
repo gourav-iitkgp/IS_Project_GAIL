@@ -106,7 +106,7 @@ const deleteJob = async (req, res) => {
 
   await job.remove();
 
-  res.status(StatusCodes.OK).json({ msg: 'Success! Job removed' });
+  res.status(StatusCodes.OK).json({ msg: 'Success! Motor removed' });
 };
 const showStats = async (req, res) => {
   let stats = await Job.aggregate([
